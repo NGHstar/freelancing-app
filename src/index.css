@@ -1,0 +1,135 @@
+@import "tailwindcss";
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  direction: rtl;
+}
+
+* {
+  scroll-behavior: smooth;
+  outline: none;
+}
+
+input[type="number"] {
+  letter-spacing: 6px;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+@font-face {
+  font-family: "vazir";
+  src: url(/public/fonts/vazirmatnfd.woff2);
+}
+
+@custom-variant dark (&:where(.dark,.dark *));
+
+@utilities {
+  /*
+    .flex-center {
+      @apply flex justify-center items-center;
+    }
+  */
+}
+
+@theme {
+  /* colors */
+  --color-primary: #fe7d6d;
+  --color-secondary: #333333;
+  --color-border: #dadada;
+  --color-place-holder: #aaaaaa;
+  --color-background: #fcfbfc;
+  --color-purple: #e2d7fd;
+  --color-chips-gray: #d3dbe2;
+  --color-chips-red: #fee5e4;
+  --color-chips-yellow: #fdf2cd;
+  --color-chips-purple: #eae0ff;
+
+  --color-ired: indianred;
+  --color-msg: mediumseagreen;
+
+  /* fonts */
+  --font-vazir: "vazir";
+}
+
+@layer base {
+  h3 {
+  }
+  p {
+  }
+}
+
+@layer components {
+  .text-input {
+    @apply w-full placeholder:text-place-holder bg-white pb-3 pt-4 px-4 border-1 rounded-xl text-secondary border-border transition duration-200 ease-in-out;
+  }
+
+  .btn {
+    @apply text-white rounded-xl px-5 py-2 pt-3 transition duration-200 cursor-pointer;
+  }
+
+  .btn--primary {
+    @apply bg-primary hover:-translate-y-1;
+  }
+
+  .btn--secondary {
+    @apply bg-transparent border-primary border-1 text-secondary;
+  }
+}
+
+:root {
+  @apply font-vazir bg-background  text-secondary;
+}
+
+/* custom radio */
+.l-radio {
+  padding: 6px;
+  border-radius: 50px;
+  display: inline-flex;
+  cursor: pointer;
+  transition: 0.2s ease;
+  margin: 8px 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.l-radio:hover,
+.l-radio:focus-within {
+  background: rgba(108, 117, 125, 0.08);
+}
+
+.l-radio input {
+  vertical-align: middle;
+  width: 20px;
+  height: 20px;
+  border-radius: 10px;
+  background: none;
+  border: 0;
+  box-shadow: inset 0 0 0 1.5px #6c757d; /* $seconday */
+  appearance: none;
+  -webkit-appearance: none;
+  padding: 0;
+  margin: 0;
+  transition: box-shadow 150ms cubic-bezier(0.95, 0.15, 0.5, 1.25);
+  pointer-events: none;
+}
+
+.l-radio input:focus {
+  outline: none;
+}
+
+.l-radio input:checked {
+  box-shadow: inset 0 0 0 6px #007bff; /* $primary */
+}
+
+.l-radio span {
+  vertical-align: middle;
+  display: inline-block;
+  line-height: 20px;
+  transform: translateY(1px);
+  padding: 0 8px;
+}
