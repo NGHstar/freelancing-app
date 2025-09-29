@@ -54,9 +54,9 @@ function CheckOTPForm({
         return;
       }
 
-      if (user.role === "OWNER") return navigate("/owner-panel");
+      if (user.role === "OWNER") return navigate("/owner/dashboard");
       if (user.role === "FREELANCER")
-        return navigate("/freelancer-panel");
+        return navigate("/freelancer/dashboard");
     } catch (error) {
       toast.error(error.response.data.message);
     }
@@ -108,7 +108,7 @@ function CheckOTPForm({
           <LoadingIndicator />
         ) : (
           <button
-            className="btn btn--primary mt-8 ml-auto mr-auto"
+            className="btn btn--primary mt-8 mx-auto"
             type="submit"
           >
             تایید

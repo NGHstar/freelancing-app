@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import Auth from "./pages/Auth";
 import {
   QueryClient,
@@ -22,7 +22,10 @@ const App = () => {
       <Routes>
         <Route path="/auth" element={<Auth />} />
         <Route path="/owner" element={<AppLayout />}>
-          <Route index element={<OwnerDashboard />} />
+          <Route
+            index
+            element={<Navigate to="dashboard" replace={true} />}
+          />
           <Route path="dashboard" element={<OwnerDashboard />} />
           <Route path="projects" element={<OwnerProjects />} />
           <Route

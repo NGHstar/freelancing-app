@@ -1,12 +1,7 @@
 import TextInput from "../../ui/TextInput";
 import LoadingIndicator from "../../ui/LoadingIndicator";
 
-function SendOTPForm({
-  phoneNumber,
-  onChange,
-  onSubmit,
-  isSendingOtp,
-}) {
+function SendOTPForm({ register, onSubmit, isSendingOtp, errors }) {
   return (
     <div>
       <form className="space-y-5" onSubmit={onSubmit}>
@@ -14,9 +9,12 @@ function SendOTPForm({
           label="شماره موبایل"
           name="phoneNumber"
           placeHolder="09---------"
-          value={phoneNumber}
-          onChange={onChange}
+          register={register}
           isNum={true}
+          validationSchema={{
+            required: "شماره موبایل ضروری است",
+          }}
+          errors={errors}
         />
 
         {!isSendingOtp ? (

@@ -1,14 +1,22 @@
-function Radio({ label, value, onChange, name, id, checked }) {
+function Radio({
+  label,
+  value,
+  register,
+  name,
+  id,
+  watch,
+  validationSchema,
+}) {
   return (
-    <label for={id} class="l-radio">
+    <label htmlFor={id} className="l-radio">
       <input
         type="radio"
         id={id}
         name={name}
-        tabindex="1"
+        tabIndex="1"
         value={value}
-        onChange={onChange}
-        checked={checked}
+        checked={watch(name) === value}
+        {...register(name, validationSchema)}
       />
       <span>{label}</span>
     </label>
