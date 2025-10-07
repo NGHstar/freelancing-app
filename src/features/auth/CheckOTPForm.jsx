@@ -76,18 +76,18 @@ function CheckOTPForm({
           }}
           className="cursor-pointer "
         >
-          <HiArrowRight className="w-6 h-6 text-blue-400 hover:text-blue-600" />
+          <HiArrowRight className="w-6 h-6 text-blue hover:text-blue/80 translate-x-1 mb-4" />
         </button>
         {otpResponse && (
-          <p className="text-gray-500 mb-12">
+          <p className="text-secondary mb-12">
             {`کد تایید به شماره ${otpResponse.phoneNumber} ارسال شد`}
 
             <button onClick={() => setStep(1)}>
-              <CiEdit className="text-blue-400 w-6 h-6 translate-y-2 mr-1 cursor-pointer hover:text-blue-600" />
+              <CiEdit className="text-blue w-6 h-6 translate-y-2 mr-1 cursor-pointer hover:text-blue/80" />
             </button>
           </p>
         )}
-        <p className="font-bold text-gray-700 text-center mb-4 ml-auto mr-auto">
+        <p className="font-bold text-secondary-400 text-center mb-4 ml-auto mr-auto">
           کد تایید را وارد کنید
         </p>
         <OTPInput
@@ -100,7 +100,7 @@ function CheckOTPForm({
             width: "2.5rem",
             padding: "0.5rem 0.2rem 0.3rem 0.2rem",
             border: "1px solid var(--color-border)",
-            backgroundColor: "white",
+            backgroundColor: "var(--color-card)",
             borderRadius: "10px",
           }}
         />
@@ -116,13 +116,13 @@ function CheckOTPForm({
         )}
         <div className="mt-8 ml-auto mr-auto">
           {time > 0 ? (
-            <p className="text-gray-500">
+            <p className="text-secondary-400">
               {time} ثانیه تا ارسال مجدد کد
             </p>
           ) : (
             <p
               onClick={onResendOtp}
-              className="text-blue-400 cursor-pointer hover:text-blue-600 transition duration-200"
+              className="text-blue cursor-pointer hover:text-blue/80 transition duration-200"
             >
               ارسال مجدد کد تایید
             </p>

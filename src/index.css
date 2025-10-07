@@ -39,29 +39,59 @@ input[type="number"]::-webkit-inner-spin-button {
 
 @theme {
   /* colors */
-  --color-primary: #fe7d6d;
-  --color-secondary: #333333;
-  --color-border: #dadada;
-  --color-place-holder: #aaaaaa;
-  --color-background: #fcfbfc;
-  --color-purple: #e2d7fd;
-  --color-chips-gray: #d3dbe2;
-  --color-chips-red: #fee5e4;
-  --color-chips-yellow: #fdf2cd;
-  --color-chips-purple: #eae0ff;
+  --color-primary: var(--primary);
+  --color-secondary: var(--secondary);
+  --color-secondary-400: var(--secondary-400);
+  --color-border: var(--border);
+  --color-place-holder: var(--place-holder);
+  --color-background: var(--background);
+  --color-card: var(--card);
+  --color-purple: var(--purple);
+  --color-blue: var(--blue);
+  --color-chips-gray: var(--chips-gray);
+  --color-chips-red: var(--chips-red);
+  --color-chips-yellow: var(--chips-yellow);
+  --color-chips-purple: var(--chips-purple);
 
+  --color-msg: var(--msg);
   --color-ired: indianred;
-  --color-msg: mediumseagreen;
 
   /* fonts */
   --font-vazir: "vazir";
 }
 
-@layer base {
-  h3 {
-  }
-  p {
-  }
+:root {
+  --primary: #e97666;
+  --secondary: #333333;
+  --secondary-400: #696d70;
+  --border: #dadada;
+  --place-holder: #aaaaaa;
+  --background: #edeff3;
+  --card: white;
+  --purple: #e2d7fd;
+  --chips-gray: #d3dbe2;
+  --chips-red: #fee5e4;
+  --chips-yellow: #fdf2cd;
+  --chips-purple: #eae0ff;
+  --msg: mediumseagreen;
+  --blue: #4584e4;
+}
+
+.dark {
+  --primary: #b86054;
+  --card: #242525;
+  --secondary: #e2e2e2;
+  --secondary-400: #8a8d92;
+  --border: #464646;
+  --place-holder: #4b4e50;
+  --background: #313436;
+  --purple: #756696;
+  --chips-gray: #434d55;
+  --chips-red: #9b7876;
+  --chips-yellow: #928762;
+  --chips-purple: #635680;
+  --msg: #2a8050;
+  --blue: #73a9d4;
 }
 
 select,
@@ -71,6 +101,9 @@ select,
 
 ::picker(select) {
   border: none;
+  background-color: transparent;
+  margin-top: 6px;
+  margin-bottom: 6px;
 }
 
 select::picker-icon {
@@ -81,8 +114,8 @@ option {
   display: flex;
   justify-content: flex-start;
   gap: 20px;
-  border: 2px solid #dddddd;
-  background: #eeeeee;
+  border: 2px solid var(--color-border);
+  background: var(--color-background);
   padding: 10px;
   transition: 0.2s;
   cursor: pointer;
@@ -99,17 +132,17 @@ option:not(option:last-of-type) {
 }
 
 option:nth-of-type(odd) {
-  background: white;
+  background: var(--color-card);
 }
 
 option:hover,
 option:focus {
-  @apply bg-blue-500 text-white;
+  @apply bg-primary text-secondary;
 }
 
 @layer components {
   .text-input {
-    @apply w-full placeholder:text-place-holder bg-white pb-3 pt-4 px-4 border-1 rounded-xl text-secondary border-border transition duration-200 ease-in-out;
+    @apply w-full placeholder:text-place-holder bg-card pb-3 pt-4 px-4 border-1 rounded-xl text-secondary border-border transition duration-200 ease-in-out;
   }
 
   .btn {
@@ -170,7 +203,7 @@ option:focus {
 }
 
 .l-radio input:checked {
-  box-shadow: inset 0 0 0 6px #007bff; /* $primary */
+  box-shadow: inset 0 0 0 6px var(--color-primary); /* $primary */
 }
 
 .l-radio span {
@@ -193,7 +226,7 @@ table .title-row {
 
 table td,
 table th {
-  border-bottom: 1px solid #f3f4f6;
+  border-bottom: 1px solid var(--color-border);
   text-align: right;
   white-space: nowrap;
 }

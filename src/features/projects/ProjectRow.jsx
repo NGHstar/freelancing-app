@@ -23,15 +23,15 @@ function ProjectRow({ project, index }) {
     <Table.Row>
       <td>{index + 1}</td>
       <td className="truncate max-w-44">{project.title}</td>
-      <td>{project.category.title}</td>
+      <td>{project.category?.title}</td>
       <td>{pMoney(project.budget)}</td>
       <td>{project.deadline ? pDate(project.deadline) : "-"}</td>
       <td>
         <div className="flex flex-wrap items-center gap-2 max-w-[200px]">
-          {project.tags.map((tag) => {
+          {project.tags?.map((tag) => {
             return (
               <span
-                className="bg-gray-200 rounded-lg px-2 pt-1 text-[0.78rem] text-gray-600"
+                className="bg-chips-gray rounded-lg px-2 pt-1 pb-0.5 text-[0.78rem] text-secondary"
                 key={tag}
               >
                 {tag}
@@ -57,13 +57,14 @@ function ProjectRow({ project, index }) {
         <>
           {/* EDIT */}
           <button onClick={() => setIsEditOpen(true)}>
-            <TbPencilMinus className="w-5 h-5 text-blue-500 cursor-pointer  rounded-sm hover:bg-blue-100 transition duration-200" />
+            <TbPencilMinus className="w-5 h-5 text-blue cursor-pointer  rounded-sm hover:opacity-60 transition duration-200" />
           </button>
           <Modal
             open={isEditOpen}
             onClose={() => setIsEditOpen(false)}
+            minWidth="sm:min-w-2xl"
             title={`ویرایش پروژه «${project.title}»`}
-            icon={<TbPencilMinus className="h-6 w-6 text-blue-500" />}
+            icon={<TbPencilMinus className="h-6 w-6 text-blue" />}
           >
             <CreateProjectForm
               projectToEdit={project}
@@ -74,7 +75,7 @@ function ProjectRow({ project, index }) {
         <>
           {/* DELETE */}
           <button onClick={() => setIsDeleteOpen(true)}>
-            <HiOutlineTrash className="w-5 h-5 text-ired cursor-pointer rounded-sm hover:bg-red-100 transition duration-200" />
+            <HiOutlineTrash className="w-5 h-5 text-ired cursor-pointer rounded-sm hover:opacity-60 transition duration-200" />
           </button>
           <Modal
             open={isDeleteOpen}
@@ -106,7 +107,7 @@ function ProjectRow({ project, index }) {
       </td>
       <td>
         <Link to={project._id}>
-          <HiEye className="w-5 h-5 text-blue-500" />
+          <HiEye className="w-5 h-5 text-blue mx-auto" />
         </Link>
       </td>
     </Table.Row>

@@ -34,6 +34,7 @@ function ProjectTable() {
         open={isCreateProjectOpen}
         onClose={() => setIsCreateProjectOpen(false)}
         title="افزودن پروژه جدید"
+        minWidth="sm:min-w-2xl"
         icon={
           <IoAddCircleOutline className="h-8 w-8 text-blue-500" />
         }

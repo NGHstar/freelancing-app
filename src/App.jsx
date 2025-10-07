@@ -10,36 +10,37 @@ import NotFound from "./pages/NotFound";
 import OwnerDashboard from "./pages/OwnerDashboard";
 import AppLayout from "./ui/AppLayout";
 import OwnerProjects from "./pages/OwnerProjects";
-import OwnerSingleProject from "./pages/OwnerSingleProject";
+import Project from "./pages/Project";
+import { DarkModeProvider } from "./context/DarkModeContext";
+import OwnerLayout from "./features/owner/OwnerLayout";
 
 const App = () => {
   // ---
   const queryClient = new QueryClient();
 
   return (
-    <QueryClientProvider client={queryClient}>
-      <Toaster />
-      <Routes>
-        <Route path="/auth" element={<Auth />} />
-        <Route path="/owner" element={<AppLayout />}>
+    <DarkModeProvider>
+      <QueryClientProvider client={queryClient}>
+        <Toaster />
+        <Routes>
+          <Route path="/auth" element={<Auth />} />
+          <Route path="/owner" element={<OwnerLayout />}>
+            <Route
+              index
+              element={<Navigate to="dashboard" replace={true} />}
+            />
+            <Route path="dashboard" element={<OwnerDashboard />} />
+            <Route path="projects" element={<OwnerProjects />} />
+            <Route path="projects/:id" element={<Project />} />
+          </Route>
+          <Route path="/not-found" element={<NotFound />} />
           <Route
-            index
-            element={<Navigate to="dashboard" replace={true} />}
+            path="/profile-complete"
+            element={<ProfileComplete />}
           />
-          <Route path="dashboard" element={<OwnerDashboard />} />
-          <Route path="projects" element={<OwnerProjects />} />
-          <Route
-            path="projects/:id"
-            element={<OwnerSingleProject />}
-          />
-        </Route>
-        <Route path="/not-found" element={<NotFound />} />
-        <Route
-          path="/profile-complete"
-          element={<ProfileComplete />}
-        />
-      </Routes>
-    </QueryClientProvider>
+        </Routes>
+      </QueryClientProvider>
+    </DarkModeProvider>
   );
 };
 

@@ -120,7 +120,7 @@ function CreateProjectForm({ onClose, projectToEdit = {} }) {
       <TextInput
         name="budget"
         label="بودجه"
-        isNum={true}
+        isNum={false}
         placeHolder=""
         register={register}
         validationSchema={{

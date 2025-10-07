@@ -3,7 +3,7 @@ import React, { useState } from "react";
 export default function TagsInput({
   tags,
   setTags,
-  tagClass = "bg-blue-500 text-white px-3 py-1 rounded-full flex items-center gap-2",
+  tagClass = "bg-chips-gray text-secondary pl-2 pr-3 py-1  rounded-full flex items-center justify-center gap-2 leading-5",
   tagsContainerClass = "flex flex-wrap gap-2 mt-2",
 }) {
   const [inputValue, setInputValue] = useState("");
@@ -26,7 +26,7 @@ export default function TagsInput({
     <div className="mt-2">
       <input
         type="text"
-        className="border focus:border-2 transition border-gray-200 focus:border-blue-300 rounded-lg px-3 pt-3 pb-2 mb-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-200"
+        className="border focus:bg-background/40 transition border-border  rounded-lg px-3 pt-3 pb-2 mb-2 w-full"
         placeholder="افزودن برچسب با فشردن کلید Enter"
         value={inputValue}
         onChange={(e) => setInputValue(e.target.value)}
@@ -40,7 +40,7 @@ export default function TagsInput({
             <button
               type="button"
               onClick={() => handleRemoveTag(tag)}
-              className="ml-1 pt-1 text-sm font-bold hover:text-black cursor-pointer transition"
+              className="ml-1 pt-1 text-sm font-bold hover:text-ired cursor-pointer transition"
             >
               ✕
             </button>
