@@ -1,9 +1,9 @@
 import { useForm } from "react-hook-form";
-import TextInput from "../../ui/TextInput";
-import RHFSelect from "../../ui/RHFSelect";
+import TextInput from "../../ui/form/TextInput";
+import RHFSelect from "../../ui/form/RHFSelect";
 import { useState } from "react";
-import TagsInput from "../../ui/TagsInput";
-import DatePickerField from "../../ui/DatePickerField";
+import TagsInput from "../../ui/form/TagsInput";
+import DatePickerField from "../../ui/form/DatePickerField";
 import useCategories from "../../hooks/useCategories";
 import useCreateProject from "./useCreateProject";
 import LoadingIndicator from "../../ui/LoadingIndicator";

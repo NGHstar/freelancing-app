@@ -1,12 +1,11 @@
-import TextInput from "../../ui/TextInput";
-import Radio from "../../ui/Radio";
+import TextInput from "../../ui/form/TextInput";
 import { useMutation } from "@tanstack/react-query";
 import { profileComplete } from "../../services/authService";
 import toast from "react-hot-toast";
 import LoadingIndicator from "../../ui/LoadingIndicator";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import RadioInputGroup from "../../ui/RadioInputGroup";
+import RadioInputGroup from "../../ui/form/RadioInputGroup";
 
 function ProfileCompleteForm() {
   // ---

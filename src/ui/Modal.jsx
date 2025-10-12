@@ -11,7 +11,7 @@ function Modal({ open, onClose, title, minWidth = "", children }) {
       >
         <div
           ref={ref}
-          className={`absolute top-28 rounded-xl bg-card shadow-border ring-border ring-1 p-4 shadow-lg transition duration-200 w-[calc(100vw-2rem)] sm:w-auto ${minWidth}`}
+          className={`absolute top-28 rounded-xl bg-card shadow-border/50 ring-border ring-1 p-4 shadow-lg transition duration-200 w-[calc(100vw-2rem)] sm:w-auto ${minWidth}`}
         >
           {/* Modal Header */}
           <div className="flex relative items-center justify-between border-b border-border pb-4 mb-6 gap-6">

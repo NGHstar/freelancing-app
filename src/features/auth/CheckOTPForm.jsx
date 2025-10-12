@@ -105,7 +105,7 @@ function CheckOTPForm({
           }}
         />
         {isPending ? (
-          <LoadingIndicator />
+          <LoadingIndicator mt="mt-10" />
         ) : (
           <button
             className="btn btn--primary mt-8 mx-auto"

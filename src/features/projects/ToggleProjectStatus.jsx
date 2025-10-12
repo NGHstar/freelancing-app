@@ -1,6 +1,6 @@
 import useToggleProjectStatus from "./useToggleProjectStatus";
 import LoadingIndicator from "../../ui/LoadingIndicator";
-import Toggle from "../../ui/Toggle";
+import Toggle from "../../ui/form/Toggle";
 
 function ToggleProjectStatus({ project }) {
   const { isToggling, toggleProjectStatus } =

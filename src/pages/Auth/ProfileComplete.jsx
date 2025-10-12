@@ -1,4 +1,4 @@
-import ProfileCompleteForm from "../features/auth/ProfileCompleteForm";
+import ProfileCompleteForm from "../../features/auth/ProfileCompleteForm";
 
 function ProfileComplete() {
   return (

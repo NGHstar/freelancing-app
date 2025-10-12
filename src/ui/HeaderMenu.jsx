@@ -8,7 +8,7 @@ function HeaderMenu() {
     <ul className="flex gap-x-4 items-center">
       <li>
         <Link to={"dashboard"}>
-          <HiOutlineUser className="w-5 h-5 text-primary" />
+          <HiOutlineUser className="w-5 h-5 text-secondary hover:text-secondary/60" />
         </Link>
       </li>
       <li>

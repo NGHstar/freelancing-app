@@ -83,7 +83,7 @@ input[type="number"]::-webkit-inner-spin-button {
   --secondary: #e2e2e2;
   --secondary-400: #8a8d92;
   --border: #464646;
-  --place-holder: #4b4e50;
+  --place-holder: #7c868d;
   --background: #313436;
   --purple: #756696;
   --chips-gray: #434d55;
@@ -97,13 +97,14 @@ input[type="number"]::-webkit-inner-spin-button {
 select,
 ::picker(select) {
   appearance: base-select;
+  padding: 10px 20px 8px 20px;
 }
 
 ::picker(select) {
   border: none;
   background-color: transparent;
-  margin-top: 6px;
-  margin-bottom: 6px;
+  margin-top: -6px;
+  margin-bottom: -6px;
 }
 
 select::picker-icon {
@@ -113,10 +114,10 @@ select::picker-icon {
 option {
   display: flex;
   justify-content: flex-start;
-  gap: 20px;
+  gap: 12px;
   border: 2px solid var(--color-border);
-  background: var(--color-background);
-  padding: 10px;
+  background: var(--card);
+  padding: 10px 20px 10px 40px;
   transition: 0.2s;
   cursor: pointer;
 }
@@ -131,13 +132,13 @@ option:not(option:last-of-type) {
   border-bottom: none;
 }
 
-option:nth-of-type(odd) {
-  background: var(--color-card);
-}
-
 option:hover,
 option:focus {
-  @apply bg-primary text-secondary;
+  @apply bg-primary text-white;
+}
+
+option:checked {
+  @apply text-white;
 }
 
 @layer components {

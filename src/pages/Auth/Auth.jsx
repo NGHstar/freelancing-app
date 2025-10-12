@@ -1,4 +1,4 @@
-import AuthContainer from "../features/auth/AuthContainer";
+import AuthContainer from "../../features/auth/AuthContainer";
 
 function Auth() {
   return <AuthContainer />;

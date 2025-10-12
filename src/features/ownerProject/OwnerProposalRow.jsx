@@ -3,15 +3,10 @@ import Table from "../../ui/Table";
 import pMoney from "../../utils/pMoney";
 import Modal from "../../ui/Modal";
 import ChangeProposalStatus from "./ChangeProposalStatus";
+import statusStyle from "../../utils/statusStyle";
 
 function ProposalRow({ proposal, index }) {
   // ---
-  const statusStyle = [
-    { label: "رد شده", bg: "bg-ired" },
-    { label: "در انتظار تایید", bg: "bg-secondary" },
-    { label: "تایید شده", bg: "bg-msg" },
-  ];
-
   const [open, setOpen] = useState(false);
 
   return (
@@ -23,8 +18,8 @@ function ProposalRow({ proposal, index }) {
       <td>{pMoney(proposal.price)} تومان</td>
       <td>
         <span
-          className={`rounded-full px-3 py-1 text-white ${
-            statusStyle[proposal.status].bg
+          className={`rounded-full px-3 py-1 ${
+            statusStyle[proposal.status].style
           }`}
         >
           {statusStyle[proposal.status].label}

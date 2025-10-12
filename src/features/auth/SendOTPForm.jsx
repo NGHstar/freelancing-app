@@ -1,4 +1,4 @@
-import TextInput from "../../ui/TextInput";
+import TextInput from "../../ui/form/TextInput";
 import LoadingIndicator from "../../ui/LoadingIndicator";
 
 function SendOTPForm({ register, onSubmit, isSendingOtp, errors }) {
@@ -24,7 +24,7 @@ function SendOTPForm({ register, onSubmit, isSendingOtp, errors }) {
             </button>
           </center>
         ) : (
-          <LoadingIndicator />
+          <LoadingIndicator mt="mt-8" />
         )}
       </form>
     </div>

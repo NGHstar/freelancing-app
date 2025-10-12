@@ -1,6 +1,6 @@
 import EmptyList from "../../ui/EmptyList";
 import Table from "../../ui/Table";
-import ProposalRow from "./ProposalRow";
+import ProposalRow from "./OwnerProposalRow";
 
 function ProposalsTable({ proposals }) {
   if (!proposals.length) return <EmptyList />;
