@@ -19,6 +19,13 @@ import OwnerLayout from "./features/owner/OwnerLayout";
 import FreelancerLayout from "./features/freelancer/FreelancerLayout";
 import FreelancerProposals from "./pages/Freelancer/FreelancerProposals";
 import SubmittedProjects from "./pages/Freelancer/SubmittedProjects";
+import ProtectedRoute from "./ui/ProtectedRoute";
+import NotAccess from "./pages/Public/NotAccess";
+import AdminLayout from "./features/admin/AdminLayout";
+import AdminDashboard from "./pages/Admin/AdminDasbhoard";
+import Users from "./pages/Admin/Users";
+import ProposalsTable from "./features/proposals/ProposalsTable";
+import AdminProposals from "./features/admin/AdminProposals";
 
 const App = () => {
   // ---
@@ -37,7 +44,14 @@ const App = () => {
           />
 
           {/* Owner */}
-          <Route path="/owner" element={<OwnerLayout />}>
+          <Route
+            path="/owner"
+            element={
+              <ProtectedRoute>
+                <OwnerLayout />
+              </ProtectedRoute>
+            }
+          >
             <Route
               index
               element={<Navigate to="dashboard" replace={true} />}
@@ -48,7 +62,14 @@ const App = () => {
           </Route>
 
           {/* Freelancer */}
-          <Route path="/freelancer" element={<FreelancerLayout />}>
+          <Route
+            path="/freelancer"
+            element={
+              <ProtectedRoute>
+                <FreelancerLayout />
+              </ProtectedRoute>
+            }
+          >
             <Route
               index
               element={<Navigate to="dashboard" replace={true} />}
@@ -64,9 +85,29 @@ const App = () => {
             <Route path="projects" element={<SubmittedProjects />} />
           </Route>
 
+          {/* Admin */}
+          <Route
+            path="/admin"
+            element={
+              <ProtectedRoute>
+                <AdminLayout />
+              </ProtectedRoute>
+            }
+          >
+            <Route
+              index
+              element={<Navigate to="dashboard" replace={true} />}
+            />
+            <Route path="dashboard" element={<AdminDashboard />} />
+            <Route path="users" element={<Users />} />
+            <Route path="projects" element={<SubmittedProjects />} />
+            <Route path="proposals" element={<AdminProposals />} />
+          </Route>
+
           {/* Public */}
           <Route path="/" element={<Home />} />
           <Route path="*" element={<NotFound />} />
+          <Route path="not-access" element={<NotAccess />} />
           {/* - */}
         </Routes>
       </QueryClientProvider>

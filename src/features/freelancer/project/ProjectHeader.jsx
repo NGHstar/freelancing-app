@@ -34,7 +34,7 @@ function ProjectHeader() {
 
   return (
     <div className="flex flex-wrap justify-between mb-12">
-      <h1 className="text-secondary text-xl mt-4 font-black">
+      <h1 className="text-secondary text-xl mt-4 font-black -translate-y-1">
         لیست پروژه‌ها
       </h1>
       <div className="flex gap-4">
