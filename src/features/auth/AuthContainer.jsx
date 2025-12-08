@@ -7,17 +7,24 @@ import toast from "react-hot-toast";
 import { useForm } from "react-hook-form";
 import useUser from "./useUser";
 import { useNavigate } from "react-router-dom";
+import LoadingIndicator from "../../ui/LoadingIndicator";
+import SiteSimpleHeader from "../../pages/Public/SiteSimpleHeader";
 
 function AuthContainer() {
   // ---
   const [step, setStep] = useState(1);
 
-  const { user } = useUser();
+  const { user, isLoading } = useUser();
 
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (user) navigate("/", { replace: true });
+    if (user && user.role === "FREELANCER")
+      navigate("/freelancer", { replace: true });
+    if (user && user.role === "ADMIN")
+      navigate("/admin", { replace: true });
+    if (user && user.role === "OWNER")
+      navigate("/owner", { replace: true });
   }, [navigate, user]);
 
   const {
@@ -42,7 +49,7 @@ function AuthContainer() {
       console.log(message);
       setStep(2);
     } catch (error) {
-      toast.error(error.response.data.message);
+      toast.error(error?.response?.data?.message || error.message);
     }
   };
 
@@ -72,8 +79,11 @@ function AuthContainer() {
     }
   };
 
+  if (isLoading) return <LoadingIndicator />;
+
   return (
-    <div className="w-full sm:max-w-sm m-auto mt-16">
+    <div className="w-[calc(100%-2rem)] sm:max-w-sm mx-auto mt-4 space-y-12">
+      <SiteSimpleHeader />
       {renderStep()}
     </div>
   );

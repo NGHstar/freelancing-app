@@ -2,7 +2,7 @@ import { HiArrowRightOnRectangle } from "react-icons/hi2";
 import { useLogout } from "./useLogout";
 import LoadingIndicator from "../../ui/LoadingIndicator";
 
-function Logout() {
+function Logout({ className = "h-5 w-5" }) {
   // ---
   const { isPending, logout } = useLogout();
   return isPending ? (
@@ -11,7 +11,9 @@ function Logout() {
     </div>
   ) : (
     <div onClick={logout}>
-      <HiArrowRightOnRectangle className="h-5 w-5 text-secondary cursor-pointer hover:text-secondary/60" />
+      <HiArrowRightOnRectangle
+        className={`${className} text-secondary cursor-pointer hover:text-secondary/60`}
+      />
     </div>
   );
 }

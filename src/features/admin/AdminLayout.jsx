@@ -12,21 +12,17 @@ function AdminLayout() {
   return (
     <AppLayout>
       <Sidebar>
-        <CustomNavLink to="dashboard">
+        <CustomNavLink to="dashboard" title="داشبورد">
           <HiHome className="w-5 h-5" />
-          داشبورد
         </CustomNavLink>
-        <CustomNavLink to="users">
+        <CustomNavLink to="users" title="کاربران">
           <HiUsers className="w-5 h-5" />
-          کاربران
         </CustomNavLink>
-        <CustomNavLink to="projects">
+        <CustomNavLink to="projects" title="پروژه‌ها">
           <HiFolderOpen className="w-5 h-5" />
-          پروژه‌ها
         </CustomNavLink>
-        <CustomNavLink to="proposals">
+        <CustomNavLink to="proposals" title="درخواست‌ها">
           <HiMail className="w-5 h-5" />
-          درخواست‌ها
         </CustomNavLink>
       </Sidebar>
     </AppLayout>

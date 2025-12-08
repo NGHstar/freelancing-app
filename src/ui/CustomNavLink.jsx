@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 
-function CustomNavLink({ children, to }) {
+function CustomNavLink({ children, to, title }) {
   // ---
   const navLinkClass =
     "flex items-center gap-x-2 hover:bg-primary/70 active:bg-primary hover:text-white px-2 py-1.5 rounded-lg duration-200 transition";
@@ -16,6 +16,7 @@ function CustomNavLink({ children, to }) {
         }
       >
         {children}
+        <span className="max-sm:hidden">{title}</span>
       </NavLink>
     </li>
   );

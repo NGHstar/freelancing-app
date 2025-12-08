@@ -17,8 +17,6 @@ function ProjectRow({ project, index }) {
 
   const { removeProject } = useRemoveProject();
 
-  console.log(project.category);
-
   return (
     <Table.Row>
       <td>{index + 1}</td>

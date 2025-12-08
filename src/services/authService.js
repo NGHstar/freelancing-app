@@ -31,6 +31,7 @@ export function getUsersApi() {
 }
 
 export function changeUserStatusApi({ userId, data }) {
+  console.log("userId in service: " + userId); // userId: 64a7f4e2c1e4f5b6d8e9f0a1
   return http
     .patch(`admin/user/verify/${userId}`, data)
     .then(({ data }) => data.data);

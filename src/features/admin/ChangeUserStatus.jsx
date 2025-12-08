@@ -21,6 +21,9 @@ const options = [
 
 function ChangeUserStatus({ userId, onClose }) {
   // ---
+
+  console.log("userid: " + userId);
+
   const { register, handleSubmit } = useForm();
   const { changeUserStatus, isChanging } = useChangeUserStatus();
 

@@ -24,7 +24,6 @@ import NotAccess from "./pages/Public/NotAccess";
 import AdminLayout from "./features/admin/AdminLayout";
 import AdminDashboard from "./pages/Admin/AdminDasbhoard";
 import Users from "./pages/Admin/Users";
-import ProposalsTable from "./features/proposals/ProposalsTable";
 import AdminProposals from "./features/admin/AdminProposals";
 
 const App = () => {

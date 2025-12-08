@@ -5,7 +5,6 @@ import OTPInput from "react-otp-input";
 import { checkOTP } from "../../services/authService";
 import LoadingIndicator from "../../ui/LoadingIndicator";
 import { useNavigate } from "react-router-dom";
-import { HiArrowCircleRight, HiArrowRight } from "react-icons/hi";
 import { CiEdit } from "react-icons/ci";
 
 const RESEND_TIME = 5; // seconds
@@ -66,18 +65,9 @@ function CheckOTPForm({
     <div>
       <form
         action=""
-        className="flex flex-col justify-center items-start"
+        className="flex flex-col justify-center items-center bg-card/50 p-8 rounded-xl"
         onSubmit={handleSubmit}
       >
-        <button
-          onClick={(e) => {
-            e.preventDefault();
-            setStep(1);
-          }}
-          className="cursor-pointer "
-        >
-          <HiArrowRight className="w-6 h-6 text-blue hover:text-blue/80 translate-x-1 mb-4" />
-        </button>
         {otpResponse && (
           <p className="text-secondary mb-12">
             {`کد تایید به شماره ${otpResponse.phoneNumber} ارسال شد`}

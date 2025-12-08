@@ -42,6 +42,7 @@ input[type="number"]::-webkit-inner-spin-button {
   --color-primary: var(--primary);
   --color-secondary: var(--secondary);
   --color-secondary-400: var(--secondary-400);
+  --color-secondary-500: var(--secondary-500);
   --color-border: var(--border);
   --color-place-holder: var(--place-holder);
   --color-background: var(--background);
@@ -64,6 +65,7 @@ input[type="number"]::-webkit-inner-spin-button {
   --primary: #e97666;
   --secondary: #333333;
   --secondary-400: #696d70;
+  --secondary-500: #4a4d50;
   --border: #dadada;
   --place-holder: #aaaaaa;
   --background: #edeff3;
@@ -82,6 +84,7 @@ input[type="number"]::-webkit-inner-spin-button {
   --card: #242525;
   --secondary: #e2e2e2;
   --secondary-400: #8a8d92;
+  --secondary-500: #b0b3b8;
   --border: #464646;
   --place-holder: #7c868d;
   --background: #313436;

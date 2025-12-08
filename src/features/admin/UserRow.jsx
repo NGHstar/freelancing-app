@@ -33,6 +33,7 @@ function UserRow({ user, index }) {
           <HiPencilAlt className="w-6 h-6 translate-y-1 -translate-x-1" />
         </button>
         <Modal
+          minWidth="sm:min-w-68"
           onClose={() => setOpen(false)}
           open={open}
           title="تعیین وضعیت کاربر"

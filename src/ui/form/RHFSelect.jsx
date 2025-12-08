@@ -29,7 +29,7 @@ function RHFSelect({ label, name, register, options, required }) {
           viewBox="0 0 24 24"
           strokeWidth="1.2"
           stroke="currentColor"
-          className="h-7 w-7 ml-1 absolute top-3.5 left-1 text-secondary"
+          className="h-7 w-7 ml-1 absolute top-2 left-1 text-secondary"
         >
           <path
             strokeLinecap="round"

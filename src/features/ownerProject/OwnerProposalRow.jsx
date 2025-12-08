@@ -39,7 +39,7 @@ function ProposalRow({ proposal, index }) {
         </Modal>
         <button
           onClick={() => setOpen(true)}
-          className="btn btn--primary"
+          className="small-btn btn--primary"
         >
           تغییر وضعیت
         </button>
