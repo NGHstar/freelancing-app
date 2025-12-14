@@ -6,14 +6,35 @@ import useUser from "../../features/auth/useUser";
 import LoadingIndicator from "../../ui/LoadingIndicator";
 import { useNavigate } from "react-router-dom";
 import Logout from "../../features/auth/Logout";
+import useProjects from "../../features/projects/useProjects";
+import { useEffect, useState } from "react";
+import Modal from "../../ui/Modal";
+import toast from "react-hot-toast";
 
 function Home() {
   // ---
+  const [isOpen, setIsOpen] = useState(false);
+
+  useEffect(() => {
+    const hasSeenWelcome = localStorage.getItem("hasSeenWelcome");
+
+    if (!hasSeenWelcome) {
+      setIsOpen(true);
+      localStorage.setItem("hasSeenWelcome", "true");
+    }
+  }, []);
+
   const { isLoading, user } = useUser();
+  const { isLoading: isLoadingProjects, projects } = useProjects();
   const navigate = useNavigate();
 
   const handleNav = () => {
     if (!user) navigate("/auth");
+
+    if (user.status !== 2) {
+      toast.error("پروفایل شما در انتظار تایید است");
+      return;
+    }
 
     if (user && user.role === "FREELANCER")
       navigate("/freelancer", { replace: true });
@@ -25,6 +46,25 @@ function Home() {
 
   return (
     <div className="container mx-auto">
+      <Modal
+        onClose={() => setIsOpen(false)}
+        open={isOpen}
+        title={"خوش آمدید"}
+      >
+        <div className="grid">
+          <span>
+            اگر با پیغام خطا مواجه شدید و یا در حالت لود گیر کردید
+            حتماً از <span className="text-amber-600">vpn </span>
+            استفاده کنید
+          </span>
+          <button
+            className="btn btn--primary mt-6  mx-16 mb-1"
+            onClick={() => setIsOpen(false)}
+          >
+            متوجه شدم
+          </button>
+        </div>
+      </Modal>
       <SiteHeader>
         {user && <Logout className="w-7 h-7" />}
         <DarkModeToggle className="h-7 w-7" />
@@ -84,50 +124,28 @@ function Home() {
         <h2 className="text-2xl font-bold text-secondary mb-8 text-center">
           جدیدترین پروژه‌ها
         </h2>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          {[
-            {
-              title: "طراحی اپ فروشگاهی با React Native",
-              budget: "۵ تا ۸ میلیون تومان",
-              image:
-                "https://cdn-icons-png.flaticon.com/512/3570/3570152.png",
-            },
-            {
-              title: "تولید محتوای تخصصی در زمینه تکنولوژی",
-              budget: "۲ تا ۴ میلیون تومان",
-              image:
-                "https://cdn-icons-png.flaticon.com/512/4080/4080032.png",
-            },
-            {
-              title: "طراحی رابط کاربری سایت فریلنسری",
-              budget: "۴ تا ۶ میلیون تومان",
-              image:
-                "https://cdn-icons-png.flaticon.com/512/2920/2920341.png",
-            },
-          ].map((p, i) => (
-            <div
-              key={i}
-              className="bg-card rounded-3xl p-6 transition-all relative overflow-hidden"
-            >
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-blue/5 opacity-50" />
-              <div className="relative z-10">
-                <img
-                  src={p.image}
-                  alt="project"
-                  className="w-14 h-14 mb-4 mx-auto"
-                />
-                <h3 className="text-lg font-semibold text-secondary mb-2 text-center">
-                  {p.title}
-                </h3>
-                <p className="text-sm text-secondary-400 text-center mb-3">
-                  بودجه: {p.budget}
-                </p>
-                <button className="block mx-auto px-4 py-2 rounded-xl bg-primary text-white text-sm hover:opacity-90">
-                  مشاهده جزئیات
-                </button>
+        <div className="grid sm:grid-cols-3 lg:grid-cols-5 gap-8">
+          {isLoadingProjects ? (
+            <LoadingIndicator mt="translate-y-2" size="small" />
+          ) : (
+            projects?.map((p, i) => (
+              <div
+                key={i}
+                className="bg-card rounded-3xl p-4 transition-all relative overflow-hidden"
+              >
+                <div className="absolute inset-0 bg-card" />
+                <div className="relative z-10">
+                  <span>📂</span>
+                  <h3 className="text-lg font-semibold text-secondary mb-2 text-center">
+                    {p.title}
+                  </h3>
+                  <p className="text-sm text-secondary-400 text-center mb-3">
+                    بودجه: {p.budget}
+                  </p>
+                </div>
               </div>
-            </div>
-          ))}
+            ))
+          )}
         </div>
       </section>
 
@@ -161,7 +179,7 @@ function Home() {
       <section className="relative w-[calc(100%-2rem)] mx-auto mt-28 mb-24 px-6 py-16 rounded-3xl bg-card text-center overflow-hidden">
         <div className="relative z-10">
           <h2 className="text-3xl font-bold text-secondary mb-4">
-            آماده همکاری هستید؟
+            فریلنسر هستید؟
           </h2>
           <p className="text-secondary-500 mb-6">
             همین حالا ثبت‌نام کنید و پروژه‌های مناسب خود را پیدا کنید

@@ -12,6 +12,8 @@ import SiteSimpleHeader from "../../pages/Public/SiteSimpleHeader";
 
 function AuthContainer() {
   // ---
+  const [otpHolder, setOtpHolder] = useState("");
+
   const [step, setStep] = useState(1);
 
   const { user, isLoading } = useUser();
@@ -47,6 +49,7 @@ function AuthContainer() {
       const { message } = await mutateAsync(data);
       toast.success("کد تایید با موفقیت ارسال شد.");
       console.log(message);
+      setOtpHolder(message.substr(message.length - 6));
       setStep(2);
     } catch (error) {
       toast.error(error?.response?.data?.message || error.message);
@@ -72,6 +75,7 @@ function AuthContainer() {
             setStep={setStep}
             onResendOtp={sendOtpHandler}
             otpResponse={otpResponse}
+            otpInit={otpHolder}
           />
         );
       default:
@@ -79,7 +83,7 @@ function AuthContainer() {
     }
   };
 
-  if (isLoading) return <LoadingIndicator />;
+  if (isLoading) return <LoadingIndicator mt="mt-32" />;
 
   return (
     <div className="w-[calc(100%-2rem)] sm:max-w-sm mx-auto mt-4 space-y-12">

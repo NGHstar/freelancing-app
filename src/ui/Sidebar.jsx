@@ -6,11 +6,11 @@ function Sidebar({ children }) {
       <div className="row-start-1 row-span-2 max-sm:hidden w-56 border-l-2 border-border bg-card p-4">
         <Link to="/">
           <img
-            src="/log5light.png"
+            src="/log4dark.svg"
             className="w-[37px] mx-auto mt-4 mb-8 not-dark:hidden"
           />
           <img
-            src="/log5.png"
+            src="/log4.svg"
             className="w-[37px] mx-auto mt-4 mb-8 dark:hidden"
           />
         </Link>
@@ -21,11 +21,11 @@ function Sidebar({ children }) {
         <ul className="flex flex-col gap-y-2">
           <Link to="/">
             <img
-              src="/log5light.png"
+              src="/log4dark.svg"
               className="w-[27px] mx-auto mt-4 mb-8 not-dark:hidden"
             />
             <img
-              src="/log5.png"
+              src="/log4.svg"
               className="w-[27px] mx-auto mt-4 mb-8 dark:hidden"
             />
           </Link>

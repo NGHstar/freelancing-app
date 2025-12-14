@@ -1,10 +1,10 @@
 import { HiArrowRight } from "react-icons/hi";
-import useMoveBack from "../../hooks/useMoveBack";
+import { useNavigate } from "react-router-dom";
 
 function NotFound() {
-  const moveBack = useMoveBack();
+  const navigate = useNavigate();
   return (
-    <div className="sm:max-w-sm flex pt-30 m-auto">
+    <div className="sm:max-w-sm flex pt-30 m-auto px-4">
       <div>
         <span className="text-7xl w-full flex  justify-center mb-8">
           ⚠️
@@ -13,7 +13,7 @@ function NotFound() {
           صفحه‌ای که به دنبال آن بودید یافت نشد!
         </h1>
         <button
-          onClick={moveBack}
+          onClick={() => navigate("/")}
           className="brn btn--primary px-5 pb-[6px] pt-2 rounded-xl hover:bg-primary/70 flex items-center gap-x-2 cursor-pointer"
         >
           <HiArrowRight className="w-4 h-4 text-secondary" />

@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 function NotAccess() {
   const nav = useNavigate();
   return (
-    <div className="sm:max-w-sm flex pt-30 m-auto">
+    <div className="sm:max-w-sm flex pt-30 m-auto px-4">
       <div>
         <span className="text-7xl w-full flex  justify-center mb-8">
           ⛔

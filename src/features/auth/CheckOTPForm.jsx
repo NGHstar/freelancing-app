@@ -14,10 +14,11 @@ function CheckOTPForm({
   setStep,
   onResendOtp,
   otpResponse,
+  otpInit = "",
 }) {
   // ---
   const navigate = useNavigate();
-  const [otp, setOtp] = useState("");
+  const [otp, setOtp] = useState(otpInit);
   const [time, setTime] = useState(RESEND_TIME);
 
   useEffect(() => {

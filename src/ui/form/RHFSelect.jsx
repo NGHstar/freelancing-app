@@ -11,6 +11,9 @@ function RHFSelect({ label, name, register, options, required }) {
           id={name}
           className="text-input appearance-none"
         >
+          <option value="" className="text-secondary-400">
+            انتخاب دسته‌بندی
+          </option>
           {options.map((option) => {
             return (
               <option

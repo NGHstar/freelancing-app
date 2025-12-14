@@ -7,22 +7,26 @@ function SiteHeader({ children, isCenter = false }) {
     >
       <div>
         <img
-          src="logolight4.png"
+          src="/logo4.svg"
+          width={140}
           className="dark:hidden max-sm:hidden"
           alt="logo"
         />
         <img
-          src="logodark4.png"
+          src="/logodark4.svg"
+          width={140}
           className="not-dark:hidden max-sm:hidden"
           alt="logo"
         />
         <img
-          src="log5.png"
+          src="/log4.svg"
+          width={32}
           className="dark:hidden sm:hidden"
           alt="logo"
         />
         <img
-          src="log5light.png"
+          src="/log4dark.svg"
+          width={32}
           className="not-dark:hidden sm:hidden"
           alt="logo"
         />

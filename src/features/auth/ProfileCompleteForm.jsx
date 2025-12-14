@@ -6,6 +6,7 @@ import LoadingIndicator from "../../ui/LoadingIndicator";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import RadioInputGroup from "../../ui/form/RadioInputGroup";
+import SiteSimpleHeader from "../../pages/Public/SiteSimpleHeader";
 
 function ProfileCompleteForm() {
   // ---
@@ -33,9 +34,8 @@ function ProfileCompleteForm() {
         toast("پروفایل شما در انتظار تایید است", { icon: "ℹ️" });
         return;
       }
-      if (user.role === "OWNER") return navigate("/owner-panel");
-      if (user.role === "FREELANCER")
-        return navigate("/freelancer-panel");
+      if (user.role === "OWNER") return navigate("/owner");
+      if (user.role === "FREELANCER") return navigate("/freelancer");
     } catch (error) {
       toast.error(error.response.data.message);
     }
@@ -43,8 +43,9 @@ function ProfileCompleteForm() {
 
   return (
     <div>
+      <SiteSimpleHeader />
       <form
-        className="space-y-8"
+        className="space-y-8 mt-12"
         onSubmit={handleSubmit(handleProfileComplete)}
       >
         <TextInput
