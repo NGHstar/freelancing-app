@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = "http://localhost:3001/api/";
+const BASE_URL = "https://freelancing-app-tau.vercel.app/api/";
 
 const app = axios.create({
   baseURL: BASE_URL,
