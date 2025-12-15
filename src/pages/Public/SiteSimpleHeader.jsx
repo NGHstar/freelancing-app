@@ -6,13 +6,13 @@ function SiteSimpleHeader() {
       <Link to="/">
         <img
           src="/logo4.svg"
-          width={180}
+          width={150}
           className="dark:hidden"
           alt="logo"
         />
         <img
           src="/logodark4.svg"
-          width={180}
+          width={150}
           className="not-dark:hidden"
           alt="logo"
         />

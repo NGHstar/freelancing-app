@@ -9,7 +9,7 @@ function Stats({ proposals }) {
   console.log(proposals);
 
   const acceptedProposals = proposals.filter((p) => p.status === 2);
-  const proposalsCount = proposals.length;
+  const proposalsCount = proposals?.length;
 
   console.log(acceptedProposals);
 
@@ -26,7 +26,7 @@ function Stats({ proposals }) {
         color={"blue"}
       />
       <StatCard
-        value={acceptedProposals.length}
+        value={acceptedProposals?.length}
         title={"درخواست‌های پذیرفته شده"}
         color={"green"}
         icon={<MdOutlineDoneAll className="w-20 h-20" />}

@@ -17,7 +17,9 @@ function SendOTPForm({ register, onSubmit, isSendingOtp, errors }) {
           }}
           errors={errors}
         />
-
+        <span className="block mb-3 dark:text-white/50 text-black/50">
+          حساب ادمین: 09381986445
+        </span>
         {!isSendingOtp ? (
           <center>
             <button type="submit" className="btn btn--primary">
@@ -25,7 +27,7 @@ function SendOTPForm({ register, onSubmit, isSendingOtp, errors }) {
             </button>
           </center>
         ) : (
-          <LoadingIndicator mt="mt-8" />
+          <LoadingIndicator size="small" mt="mt-8" />
         )}
       </form>
     </div>

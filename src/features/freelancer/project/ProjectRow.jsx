@@ -33,6 +33,7 @@ function ProjectRow({ project, index }) {
         />
         <Modal
           open={open}
+          minWidth="sm:min-w-md"
           title={`ثبت درخواست برای پروژه ${title}`}
           onClose={() => setOpen(false)}
         >

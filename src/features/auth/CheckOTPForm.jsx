@@ -7,7 +7,7 @@ import LoadingIndicator from "../../ui/LoadingIndicator";
 import { useNavigate } from "react-router-dom";
 import { CiEdit } from "react-icons/ci";
 
-const RESEND_TIME = 5; // seconds
+const RESEND_TIME = 30; // seconds
 
 function CheckOTPForm({
   phoneNumber,
@@ -22,6 +22,13 @@ function CheckOTPForm({
   const [time, setTime] = useState(RESEND_TIME);
 
   useEffect(() => {
+    if (otpInit) {
+      setOtp(otpInit);
+      submitOtp(otpInit);
+    }
+  }, [otpInit]);
+
+  useEffect(() => {
     const timer =
       time > 0 &&
       setInterval(() => {
@@ -33,16 +40,20 @@ function CheckOTPForm({
     };
   }, [time]);
 
-  const { isPending, mutateAsync } = useMutation({
+  const { isPending, mutateAsync: checkOtp } = useMutation({
     mutationFn: checkOTP,
   });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    submitOtp();
+  };
+
+  const submitOtp = async (otpValue) => {
     try {
-      const { user, message } = await mutateAsync({
+      const { user, message } = await checkOtp({
         phoneNumber,
-        otp,
+        otp: otpValue,
       });
       toast.success(message);
 

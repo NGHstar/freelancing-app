@@ -7,13 +7,13 @@ import StatCard from "../../ui/StatCard";
 
 function Stats({ projects }) {
   // ---
-  const projectsCount = projects.length;
+  const projectsCount = projects?.length;
 
-  const acceptedProjectsCount = projects.filter(
+  const acceptedProjectsCount = projects?.filter(
     (p) => p.status === 2
   ).length;
 
-  const proposalsCount = projects.reduce(
+  const proposalsCount = projects?.reduce(
     (sum, project) => project.proposals.length + sum,
     0
   ); // 0 is the initial value of sum

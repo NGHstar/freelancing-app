@@ -124,27 +124,34 @@ function Home() {
         <h2 className="text-2xl font-bold text-secondary mb-8 text-center">
           جدیدترین پروژه‌ها
         </h2>
-        <div className="grid sm:grid-cols-3 lg:grid-cols-5 gap-8">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-8">
           {isLoadingProjects ? (
             <LoadingIndicator mt="translate-y-2" size="small" />
           ) : (
-            projects?.map((p, i) => (
-              <div
-                key={i}
-                className="bg-card rounded-3xl p-4 transition-all relative overflow-hidden"
-              >
-                <div className="absolute inset-0 bg-card" />
-                <div className="relative z-10">
-                  <span>📂</span>
-                  <h3 className="text-lg font-semibold text-secondary mb-2 text-center">
-                    {p.title}
-                  </h3>
-                  <p className="text-sm text-secondary-400 text-center mb-3">
-                    بودجه: {p.budget}
-                  </p>
+            projects
+              ?.filter((p) => p.status === "OPEN")
+              .sort(
+                (a, b) =>
+                  new Date(b.createdAt) - new Date(a.createdAt)
+              )
+              .slice(0, 5)
+              .map((p, i) => (
+                <div
+                  key={i}
+                  className="bg-card rounded-3xl p-4 transition-all relative overflow-hidden"
+                >
+                  <div className="absolute inset-0 bg-card" />
+                  <div className="relative z-10">
+                    <span>📂</span>
+                    <h3 className="text-lg font-semibold text-secondary mb-2 text-center">
+                      {p.title}
+                    </h3>
+                    <p className="text-sm text-secondary-400 text-center mb-3">
+                      بودجه: {p.budget}
+                    </p>
+                  </div>
                 </div>
-              </div>
-            ))
+              ))
           )}
         </div>
       </section>

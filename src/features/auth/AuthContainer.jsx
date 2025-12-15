@@ -49,8 +49,10 @@ function AuthContainer() {
       const { message } = await mutateAsync(data);
       toast.success("کد تایید با موفقیت ارسال شد.");
       console.log(message);
-      setOtpHolder(message.substr(message.length - 6));
       setStep(2);
+      setTimeout(() => {
+        setOtpHolder(message.substr(message?.length - 6));
+      }, 1200);
     } catch (error) {
       toast.error(error?.response?.data?.message || error.message);
     }
@@ -73,7 +75,7 @@ function AuthContainer() {
           <CheckOTPForm
             phoneNumber={getValues("phoneNumber")}
             setStep={setStep}
-            onResendOtp={sendOtpHandler}
+            onResendOtp={handleSubmit(sendOtpHandler)}
             otpResponse={otpResponse}
             otpInit={otpHolder}
           />

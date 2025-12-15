@@ -29,11 +29,12 @@ function CreateProposalForm({ onClose, projectId }) {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="space-y-6 grid grid-cols-2 gap-6 max-sm:grid-cols-1"
+      className="flex flex-wrap flex-col space-y-6 items-stretch"
     >
       <TextInput
         name="description"
         label="متن درخواست"
+        isMultiline={true}
         isNum={false}
         placeHolder={""}
         register={register}
@@ -46,37 +47,39 @@ function CreateProposalForm({ onClose, projectId }) {
         }}
         errors={errors}
       />
-      <TextInput
-        name="price"
-        label="قیمت پیشنهادی"
-        isNum={false}
-        isPrice={true}
-        placeHolder=""
-        register={register}
-        validationSchema={{
-          required: "قیمت ضروری است",
-        }}
-        errors={errors}
-      />
+      <div className="space-y-6 flex flex-wrap gap-6">
+        <TextInput
+          name="price"
+          label="قیمت پیشنهادی (تومان)"
+          isNum={false}
+          isPrice={true}
+          placeHolder=""
+          register={register}
+          validationSchema={{
+            required: "قیمت ضروری است",
+          }}
+          errors={errors}
+        />
 
-      <TextInput
-        name="duration"
-        label="مدت زمان (روز)"
-        isNum={false}
-        placeHolder=""
-        register={register}
-        validationSchema={{
-          required: "مدت زمان ضروری است",
-        }}
-        errors={errors}
-      />
+        <TextInput
+          name="duration"
+          label="مدت زمان (روز)"
+          isNum={false}
+          placeHolder=""
+          register={register}
+          validationSchema={{
+            required: "مدت زمان ضروری است",
+          }}
+          errors={errors}
+        />
+      </div>
 
       {isAdding ? (
         <LoadingIndicator />
       ) : (
         <button
           type="submit"
-          className="btn btn--primary  w-full sm:col-span-2"
+          className="btn btn--primary  w-full sm:col-span-2 mb-1 mt-2"
         >
           ثبت درخواست
         </button>
