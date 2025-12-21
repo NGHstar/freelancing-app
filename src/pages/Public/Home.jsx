@@ -7,23 +7,11 @@ import LoadingIndicator from "../../ui/LoadingIndicator";
 import { useNavigate } from "react-router-dom";
 import Logout from "../../features/auth/Logout";
 import useProjects from "../../features/projects/useProjects";
-import { useEffect, useState } from "react";
-import Modal from "../../ui/Modal";
+
 import toast from "react-hot-toast";
 
 function Home() {
   // ---
-  const [isOpen, setIsOpen] = useState(false);
-
-  useEffect(() => {
-    const hasSeenWelcome = localStorage.getItem("hasSeenWelcome");
-
-    if (!hasSeenWelcome) {
-      setIsOpen(true);
-      localStorage.setItem("hasSeenWelcome", "true");
-    }
-  }, []);
-
   const { isLoading, user } = useUser();
   const { isLoading: isLoadingProjects, projects } = useProjects();
   const navigate = useNavigate();
@@ -46,25 +34,6 @@ function Home() {
 
   return (
     <div className="container mx-auto">
-      <Modal
-        onClose={() => setIsOpen(false)}
-        open={isOpen}
-        title={"خوش آمدید"}
-      >
-        <div className="grid">
-          <span>
-            اگر با پیغام خطا مواجه شدید و یا در حالت لود گیر کردید
-            حتماً از <span className="text-amber-600">vpn </span>
-            استفاده کنید
-          </span>
-          <button
-            className="btn btn--primary mt-6  mx-16 mb-1"
-            onClick={() => setIsOpen(false)}
-          >
-            متوجه شدم
-          </button>
-        </div>
-      </Modal>
       <SiteHeader>
         {user && <Logout className="w-7 h-7" />}
         <DarkModeToggle className="h-7 w-7" />
