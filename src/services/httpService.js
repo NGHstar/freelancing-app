@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = "https://shaky-sarette-ngh-be9fdd09.koyeb.app/api/";
+const BASE_URL = "https://freelancer-backend.liara.run/api/";
 
 const app = axios.create({
   baseURL: BASE_URL,
